@@ -12,6 +12,7 @@ from django.views.decorators.http import require_POST
 from taggit.models import Tag
 from django.db.models import Count
 
+
 def post_list(request, tag_slug=None):
     post_list = Post.published.all()
     tag = None
@@ -33,6 +34,7 @@ def post_list(request, tag_slug=None):
                   'blog/post/list.html', 
                   {'posts': posts,
                    'tag': tag})
+
 
 def post_detail(request, year, month, day, post):
     post = get_object_or_404(Post,  
@@ -61,6 +63,7 @@ def post_detail(request, year, month, day, post):
                    'form': form,
                    'similar_posts': similar_posts})
 
+
 class PostListView(ListView):
     """
     Alternative post list view
@@ -70,9 +73,11 @@ class PostListView(ListView):
     paginate_by = 3
     template_name = 'blog/post/list.html'
 
+
 def post_share(request, post_id):
     # Retrieve post by id
-    post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
+    post = get_object_or_404(Post, id=post_id, \
+                                   status=Post.Status.PUBLISHED)
     sent = False
     
     if request.method == 'POST':
@@ -81,8 +86,7 @@ def post_share(request, post_id):
         if form.is_valid():
             # Form fields passed validation
             cd = form.cleaned_data
-            post_url = request.build_absolute_uri(
-                post.get_absolute_url())
+            post_url = request.build_absolute_uri(post.get_absolute_url())
             subject = f"{cd['name']} recommends you read " \
                       f"{post.title}"
             message = f"Read {post.title} at {post_url}\n\n" \
@@ -90,15 +94,18 @@ def post_share(request, post_id):
             send_mail(subject, message, 'your_account@gmail.com', 
                       [cd['to']])
             sent = True
+    
     else:
         form = EmailPostForm()
     return render(request, 'blog/post/share.html', {'post': post, 
                                                     'form': form, 
                                                     'sent': sent})
 
+
 @require_POST
 def post_comment(request, post_id):
-    post = get_object_or_404(Post, id=post_id, status=Post.Status.PUBLISHED)
+    post = get_object_or_404(Post, id=post_id, \
+                                   status=Post.Status.PUBLISHED)
     comment = None
     # A comment was posted
     form = CommentForm(data=request.POST)
@@ -113,6 +120,7 @@ def post_comment(request, post_id):
                            {'post': post,
                             'form': form,
                             'comment': comment})
+
 
 def post_search(request):
     form = SearchForm()

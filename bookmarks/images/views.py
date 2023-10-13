@@ -24,7 +24,7 @@ def image_create(request):
             new_image.save()
             messages.success(request,
                              'Image added successfully')
-            # redirect to new created item detail view
+            # redirect to new created image detail view
             return redirect(new_image.get_absolute_url())
     else:
         # build form with data provided by the bookmarklet via GET

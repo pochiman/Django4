@@ -30,6 +30,7 @@ class UserRegistrationForm(forms.ModelForm):
             raise forms.ValidationError('Email already in use.')
         return data
 
+
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
@@ -42,6 +43,7 @@ class UserEditForm(forms.ModelForm):
         if qs.exists():
             raise forms.ValidationError(' Email already in use.')
         return data
+
 
 class ProfileEditForm(forms.ModelForm):
     class Meta:

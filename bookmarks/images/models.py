@@ -26,7 +26,7 @@ class Image(models.Model):
             models.Index(fields=['-total_likes']),
         ]
         ordering = ['-created']
-    
+
     def __str__(self):
         return self.title
 

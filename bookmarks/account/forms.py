@@ -13,7 +13,7 @@ class UserRegistrationForm(forms.ModelForm):
                                widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repeat password',
                                 widget=forms.PasswordInput)
-    
+
     class Meta:
         model = User
         fields = ['username', 'first_name', 'email']
@@ -41,7 +41,7 @@ class UserEditForm(forms.ModelForm):
         qs = User.objects.exclude(id=self.instance.id)\
                          .filter(email=data)
         if qs.exists():
-            raise forms.ValidationError(' Email already in use.')
+            raise forms.ValidationError('Email already in use.')
         return data
 
 

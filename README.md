@@ -55,29 +55,17 @@ This exercise covers a wide range of web app development topics as specified bel
   - Built a custom middleware
   - Created custom management commands
 
-#### product list page
-![](images/product_list_page.png)
+#### login
+![](images/login.png)
 
-#### product detail page
-![](images/product_detail_page.png)
+#### student registration form
+![](images/student_registration_form.png)
 
-#### cart detail page
-![](images/cart_detail_page.png)
+#### all courses
+![](images/all_courses.png)
 
-#### checkout page
-![](images/checkout_page.png)
+#### my courses
+![](images/my_courses.png)
 
-#### order summary page
-![](images/order_summary_page.png)
-
-#### stripe checkout payment form
-![](images/stripe_checkout_payment_form.png)
-
-#### success page
-![](images/success_page.png)
-
-#### orders admin page
-![](images/orders_page.png)
-
-#### pdf invoice
-![](images/pdf_invoice.png)
+#### manage contents
+![](images/manage_contents.png)
